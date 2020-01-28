@@ -7,10 +7,6 @@ The models for supervised classification include:
 * Support Vector Machines
 * Multi-Layer Perceptrons (Neural Networks)
 
-Approaches for hyper-parameter tuning of the models include:
-* Grid Search algorithms
-* Stratified K-Fold Cross Validation
-
 ## Sections
 
 0. Introduction and Data Management
