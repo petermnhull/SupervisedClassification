@@ -2,7 +2,7 @@
 <html>
 <head><meta charset="utf-8" />
 
-<title>Data Science, Coursework 2, Peter Hull, 01192617</title>
+<title>book</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -13089,7 +13089,7 @@ div#notebook {
 
 <!-- Loading mathjax macro -->
 <!-- Load mathjax -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML"></script>
     <!-- MathJax configuration -->
     <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
@@ -13116,7 +13116,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Methods-for-Data-Science---Coursework-2">Methods for Data Science - Coursework 2<a class="anchor-link" href="#Methods-for-Data-Science---Coursework-2">&#182;</a></h1><h3 id="Peter-M-N-Hull">Peter M N Hull<a class="anchor-link" href="#Peter-M-N-Hull">&#182;</a></h3>
+<h1 id="Introduction-to-Supervised-Classification">Introduction to Supervised Classification<a class="anchor-link" href="#Introduction-to-Supervised-Classification">&#182;</a></h1><h3 id="Peter-M-N-Hull">Peter M N Hull<a class="anchor-link" href="#Peter-M-N-Hull">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -13124,7 +13124,7 @@ div#notebook {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">&#182;</a></h2><p>In this piece of work, we will explore a data set that contains rating information for cars in a used car dealership, with descriptor variables such as buying price and car features. In the following we will perform various data science methods to compare different classification methods using this multi-dimensional data.</p>
-<p>The goal of this coursework will be to find an optimal model to recommend to the manager of a used car dealership, in order to be able to judge the ratings of new cars using this model, based on their buying price, maintenance price, number of doors, size of boot, and the estimated safety.</p>
+<p>The goal of this work is to find an optimal model to recommend to the manager of a used car dealership, in order to be able to judge the ratings of new cars using this model, based on their buying price, maintenance price, number of doors, size of boot, and the estimated safety.</p>
 <p><em>Note to the reader: All figures typed in plain text within the discussion are accurate as of the creation of this HTML file. If the .ipynb file is re-ran then such figures may be slightly different, but the discussion surrounding them should still apply if the seed is kept the same.</em></p>
 
 </div>
@@ -24366,29 +24366,29 @@ width=700
 <div class="prompt input_prompt">In&nbsp;[29]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">time</span>
-# Fix the parameters that are chosen according to our data set/
-# These always stay the same as we have 6 descriptor variables and 4 ways of classifying the cars
-input_size = 6
-num_classes = 4
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
+<span class="c1"># Fix the parameters that are chosen according to our data set/</span>
+<span class="c1"># These always stay the same as we have 6 descriptor variables and 4 ways of classifying the cars</span>
+<span class="n">input_size</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="n">num_classes</span> <span class="o">=</span> <span class="mi">4</span>
 
-# Define the hyperparameters that we&#39;re gonna use in the following analysis
-hidden_size = 200
-num_epochs = 120
-batch_size = 64
-learning_rate = 0.05
+<span class="c1"># Define the hyperparameters that we&#39;re gonna use in the following analysis</span>
+<span class="n">hidden_size</span> <span class="o">=</span> <span class="mi">200</span>
+<span class="n">num_epochs</span> <span class="o">=</span> <span class="mi">120</span>
+<span class="n">batch_size</span> <span class="o">=</span> <span class="mi">64</span>
+<span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">0.05</span>
 
-# Set up the first network example
-network_base = get_network(input_size, hidden_size, num_classes)
+<span class="c1"># Set up the first network example</span>
+<span class="n">network_base</span> <span class="o">=</span> <span class="n">get_network</span><span class="p">(</span><span class="n">input_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">)</span>
 
-# Calculate losses, accuracies and return the trained network
-loss_base, accuracies_base, network_base = neural_network_training(
-    network_base,
-    batch_size = batch_size,
-    learning_rate = learning_rate,
-    print_loss_values = True,
-    split_and_test = True
-    )
+<span class="c1"># Calculate losses, accuracies and return the trained network</span>
+<span class="n">loss_base</span><span class="p">,</span> <span class="n">accuracies_base</span><span class="p">,</span> <span class="n">network_base</span> <span class="o">=</span> <span class="n">neural_network_training</span><span class="p">(</span>
+    <span class="n">network_base</span><span class="p">,</span>
+    <span class="n">batch_size</span> <span class="o">=</span> <span class="n">batch_size</span><span class="p">,</span>
+    <span class="n">learning_rate</span> <span class="o">=</span> <span class="n">learning_rate</span><span class="p">,</span>
+    <span class="n">print_loss_values</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">split_and_test</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="p">)</span>
 </pre></div>
 
     </div>
@@ -25826,9 +25826,9 @@ SUVORK5CYII=
 <div class="prompt input_prompt">In&nbsp;[0]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">time</span>
-# Calculate losses and accuracies for a network with learning rate 0.0005
-loss_2, accuracies_2, _ = get_trained_neural_network(64, 0.0005, split_and_test = True)
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
+<span class="c1"># Calculate losses and accuracies for a network with learning rate 0.0005</span>
+<span class="n">loss_2</span><span class="p">,</span> <span class="n">accuracies_2</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">get_trained_neural_network</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mf">0.0005</span><span class="p">,</span> <span class="n">split_and_test</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -25860,9 +25860,9 @@ Wall time: 10.2 s
 <div class="prompt input_prompt">In&nbsp;[0]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">time</span>
-# Calculate losses and accuracies for a network with learning rate 0.15
-loss_3, accuracies_3, _ = get_trained_neural_network(64, 0.15, split_and_test = True)
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
+<span class="c1"># Calculate losses and accuracies for a network with learning rate 0.15</span>
+<span class="n">loss_3</span><span class="p">,</span> <span class="n">accuracies_3</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">get_trained_neural_network</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">,</span> <span class="n">split_and_test</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -25894,9 +25894,9 @@ Wall time: 10.1 s
 <div class="prompt input_prompt">In&nbsp;[0]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">time</span>
-# Calculate losses and accuracies for a netwrok with learning rate 0.95
-loss_4, accuracies_4, _ = get_trained_neural_network(64, 0.95, split_and_test = True)
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
+<span class="c1"># Calculate losses and accuracies for a netwrok with learning rate 0.95</span>
+<span class="n">loss_4</span><span class="p">,</span> <span class="n">accuracies_4</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">get_trained_neural_network</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">,</span> <span class="n">split_and_test</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -28260,9 +28260,9 @@ KEmSJEkCLBAlSZIkSb0sECVJkiRJAPwOgKsDNNer1RQAAAAASUVORK5CYII=
 <div class="prompt input_prompt">In&nbsp;[0]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">time</span>
-# Calculate the losses and accuracies for a neural network with batch size 2
-loss_5, accuracies_5, _ = get_trained_neural_network(2, 0.05, split_and_test = True)
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
+<span class="c1"># Calculate the losses and accuracies for a neural network with batch size 2</span>
+<span class="n">loss_5</span><span class="p">,</span> <span class="n">accuracies_5</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">get_trained_neural_network</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="n">split_and_test</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -28294,9 +28294,9 @@ Wall time: 2min 32s
 <div class="prompt input_prompt">In&nbsp;[0]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">time</span>
-# Calculate the losses and accuracies for a neural network with batch size 100
-loss_6, accuracies_6, _ = get_trained_neural_network(100, 0.05, split_and_test = True)
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
+<span class="c1"># Calculate the losses and accuracies for a neural network with batch size 100</span>
+<span class="n">loss_6</span><span class="p">,</span> <span class="n">accuracies_6</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">get_trained_neural_network</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="n">split_and_test</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -28328,9 +28328,9 @@ Wall time: 8.58 s
 <div class="prompt input_prompt">In&nbsp;[0]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">time</span>
-# Calculate the losses and accuracies for a neural network with batch size 256
-loss_7, accuracies_7, _ = get_trained_neural_network(256, 0.05, split_and_test = True)
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
+<span class="c1"># Calculate the losses and accuracies for a neural network with batch size 256</span>
+<span class="n">loss_7</span><span class="p">,</span> <span class="n">accuracies_7</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">get_trained_neural_network</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="n">split_and_test</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -30948,8 +30948,8 @@ EREREQD+H1e5ijZ2jUmbAAAAAElFTkSuQmCC
 <div class="prompt input_prompt">In&nbsp;[0]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">time</span>
-dropout_rate_optimal_i, accuracy_optimal_i, dropout_parameters_i, accuracies_i = tune_dropout_rate(fineness = 10, print_progress = True)
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
+<span class="n">dropout_rate_optimal_i</span><span class="p">,</span> <span class="n">accuracy_optimal_i</span><span class="p">,</span> <span class="n">dropout_parameters_i</span><span class="p">,</span> <span class="n">accuracies_i</span> <span class="o">=</span> <span class="n">tune_dropout_rate</span><span class="p">(</span><span class="n">fineness</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">print_progress</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -31545,13 +31545,13 @@ gggAAAAAuIiCCAAAAACQJP0/B4El1zXKmeIAAAAASUVORK5CYII=
 <div class="prompt input_prompt">In&nbsp;[0]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">time</span>
-dropout_rate_optimal, accuracy_optimal, dropout_parameters, accuracies = tune_dropout_rate(
-    start = dropout_rate_optimal_i - 0.15,
-    end = dropout_rate_optimal_i + 0.15,
-    fineness = 15,
-    print_progress = True
-    )
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
+<span class="n">dropout_rate_optimal</span><span class="p">,</span> <span class="n">accuracy_optimal</span><span class="p">,</span> <span class="n">dropout_parameters</span><span class="p">,</span> <span class="n">accuracies</span> <span class="o">=</span> <span class="n">tune_dropout_rate</span><span class="p">(</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="n">dropout_rate_optimal_i</span> <span class="o">-</span> <span class="mf">0.15</span><span class="p">,</span>
+    <span class="n">end</span> <span class="o">=</span> <span class="n">dropout_rate_optimal_i</span> <span class="o">+</span> <span class="mf">0.15</span><span class="p">,</span>
+    <span class="n">fineness</span> <span class="o">=</span> <span class="mi">15</span><span class="p">,</span>
+    <span class="n">print_progress</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="p">)</span>
 </pre></div>
 
     </div>
@@ -32392,16 +32392,16 @@ RU5ErkJggg==
 <div class="prompt input_prompt">In&nbsp;[0]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">time</span>
-# Get the optimal network
-losses_optimal, accuracies_optimal, network_optimal = get_trained_neural_network(
-    batch_size = batch_size_optimal,
-    learning_rate = learning_rate_optimal,
-    dropout_rate = dropout_rate_optimal,
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
+<span class="c1"># Get the optimal network</span>
+<span class="n">losses_optimal</span><span class="p">,</span> <span class="n">accuracies_optimal</span><span class="p">,</span> <span class="n">network_optimal</span> <span class="o">=</span> <span class="n">get_trained_neural_network</span><span class="p">(</span>
+    <span class="n">batch_size</span> <span class="o">=</span> <span class="n">batch_size_optimal</span><span class="p">,</span>
+    <span class="n">learning_rate</span> <span class="o">=</span> <span class="n">learning_rate_optimal</span><span class="p">,</span>
+    <span class="n">dropout_rate</span> <span class="o">=</span> <span class="n">dropout_rate_optimal</span><span class="p">,</span>
 
-    # Now turn split and test on so that we can observe the in-sample accuracy for these parameters
-    split_and_test = True
-)
+    <span class="c1"># Now turn split and test on so that we can observe the in-sample accuracy for these parameters</span>
+    <span class="n">split_and_test</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="p">)</span>
 </pre></div>
 
     </div>
@@ -34244,10 +34244,10 @@ AAAMER4BAAAAAIYIjwAAAAAAQ4RHAAAAAIChH928lMw1WLFPAAAAAElFTkSuQmCC
 <div class="prompt input_prompt">In&nbsp;[0]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">time</span>
-y_pred_rf = rf_classifier_optimal.predict(descriptors_test)
-class_report_rf = classification_report(target_test, y_pred_rf, target_names = target_names)
-conf_matrix_rf = confusion_matrix(target_test, y_pred_rf)
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
+<span class="n">y_pred_rf</span> <span class="o">=</span> <span class="n">rf_classifier_optimal</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">descriptors_test</span><span class="p">)</span>
+<span class="n">class_report_rf</span> <span class="o">=</span> <span class="n">classification_report</span><span class="p">(</span><span class="n">target_test</span><span class="p">,</span> <span class="n">y_pred_rf</span><span class="p">,</span> <span class="n">target_names</span> <span class="o">=</span> <span class="n">target_names</span><span class="p">)</span>
+<span class="n">conf_matrix_rf</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">target_test</span><span class="p">,</span> <span class="n">y_pred_rf</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -34279,10 +34279,10 @@ Wall time: 13.8 ms
 <div class="prompt input_prompt">In&nbsp;[0]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">time</span>
-y_pred_svc = svc_classifier_optimal.predict(descriptors_test)
-class_report_svc = classification_report(target_test, y_pred_svc, target_names = target_names)
-conf_matrix_svc = confusion_matrix(target_test, y_pred_svc)
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
+<span class="n">y_pred_svc</span> <span class="o">=</span> <span class="n">svc_classifier_optimal</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">descriptors_test</span><span class="p">)</span>
+<span class="n">class_report_svc</span> <span class="o">=</span> <span class="n">classification_report</span><span class="p">(</span><span class="n">target_test</span><span class="p">,</span> <span class="n">y_pred_svc</span><span class="p">,</span> <span class="n">target_names</span> <span class="o">=</span> <span class="n">target_names</span><span class="p">)</span>
+<span class="n">conf_matrix_svc</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">target_test</span><span class="p">,</span> <span class="n">y_pred_svc</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -34314,11 +34314,11 @@ Wall time: 123 ms
 <div class="prompt input_prompt">In&nbsp;[0]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">time</span>
-test_loader = get_test_loader_from_arrays(batch_size_optimal, descriptors_test, target_test)
-y_pred_nn, _ = neural_network_predict(network_optimal, test_loader)
-class_report_nn = classification_report(target_test, y_pred_nn, target_names = target_names)
-conf_matrix_nn = confusion_matrix(target_test, y_pred_nn)
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
+<span class="n">test_loader</span> <span class="o">=</span> <span class="n">get_test_loader_from_arrays</span><span class="p">(</span><span class="n">batch_size_optimal</span><span class="p">,</span> <span class="n">descriptors_test</span><span class="p">,</span> <span class="n">target_test</span><span class="p">)</span>
+<span class="n">y_pred_nn</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">neural_network_predict</span><span class="p">(</span><span class="n">network_optimal</span><span class="p">,</span> <span class="n">test_loader</span><span class="p">)</span>
+<span class="n">class_report_nn</span> <span class="o">=</span> <span class="n">classification_report</span><span class="p">(</span><span class="n">target_test</span><span class="p">,</span> <span class="n">y_pred_nn</span><span class="p">,</span> <span class="n">target_names</span> <span class="o">=</span> <span class="n">target_names</span><span class="p">)</span>
+<span class="n">conf_matrix_nn</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">target_test</span><span class="p">,</span> <span class="n">y_pred_nn</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -35406,9 +35406,9 @@ AABJRU5ErkJggg==
 <div class="prompt input_prompt">In&nbsp;[0]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">time</span>
-# Train the network
-loss_deep, accuracies_deep, network_deep = neural_network_training(network_deep, print_loss_values = False, split_and_test = True)
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
+<span class="c1"># Train the network</span>
+<span class="n">loss_deep</span><span class="p">,</span> <span class="n">accuracies_deep</span><span class="p">,</span> <span class="n">network_deep</span> <span class="o">=</span> <span class="n">neural_network_training</span><span class="p">(</span><span class="n">network_deep</span><span class="p">,</span> <span class="n">print_loss_values</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">split_and_test</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -37290,18 +37290,18 @@ RU5ErkJggg==
 <div class="prompt input_prompt">In&nbsp;[0]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">time</span>
-# Create instance of the deep network
-network_d2 = NeuralNetDeep(input_size, hidden_size_d, num_classes)
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
+<span class="c1"># Create instance of the deep network</span>
+<span class="n">network_d2</span> <span class="o">=</span> <span class="n">NeuralNetDeep</span><span class="p">(</span><span class="n">input_size</span><span class="p">,</span> <span class="n">hidden_size_d</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">)</span>
 
-# Calculate losses and accuracies for a network with learning rate 0.0005
-loss_d2, accuracies_d2, _ = neural_network_training(
-    network_deep,
-    learning_rate = 0.0005,
-    batch_size = 64,
-    print_loss_values = False,
-    split_and_test = True
-)
+<span class="c1"># Calculate losses and accuracies for a network with learning rate 0.0005</span>
+<span class="n">loss_d2</span><span class="p">,</span> <span class="n">accuracies_d2</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">neural_network_training</span><span class="p">(</span>
+    <span class="n">network_deep</span><span class="p">,</span>
+    <span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">0.0005</span><span class="p">,</span>
+    <span class="n">batch_size</span> <span class="o">=</span> <span class="mi">64</span><span class="p">,</span>
+    <span class="n">print_loss_values</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">split_and_test</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="p">)</span>
 </pre></div>
 
     </div>
@@ -37333,18 +37333,18 @@ Wall time: 10.8 s
 <div class="prompt input_prompt">In&nbsp;[0]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">time</span>
-# Create instance of the deep network
-network_d3 = NeuralNetDeep(input_size, hidden_size_d, num_classes)
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
+<span class="c1"># Create instance of the deep network</span>
+<span class="n">network_d3</span> <span class="o">=</span> <span class="n">NeuralNetDeep</span><span class="p">(</span><span class="n">input_size</span><span class="p">,</span> <span class="n">hidden_size_d</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">)</span>
 
-# Calculate losses and accuracies for a network with learning rate 0.0005
-loss_d3, accuracies_d3, _ = neural_network_training(
-    network_d3,
-    learning_rate = 0.95,
-    batch_size = 64,
-    print_loss_values = False,
-    split_and_test = True
-)
+<span class="c1"># Calculate losses and accuracies for a network with learning rate 0.0005</span>
+<span class="n">loss_d3</span><span class="p">,</span> <span class="n">accuracies_d3</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">neural_network_training</span><span class="p">(</span>
+    <span class="n">network_d3</span><span class="p">,</span>
+    <span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">0.95</span><span class="p">,</span>
+    <span class="n">batch_size</span> <span class="o">=</span> <span class="mi">64</span><span class="p">,</span>
+    <span class="n">print_loss_values</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">split_and_test</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="p">)</span>
 </pre></div>
 
     </div>
@@ -40078,18 +40078,18 @@ YII=
 <div class="prompt input_prompt">In&nbsp;[0]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">time</span>
-# Create instance of the deep network
-network_d4 = NeuralNetDeep(input_size, hidden_size_d, num_classes)
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
+<span class="c1"># Create instance of the deep network</span>
+<span class="n">network_d4</span> <span class="o">=</span> <span class="n">NeuralNetDeep</span><span class="p">(</span><span class="n">input_size</span><span class="p">,</span> <span class="n">hidden_size_d</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">)</span>
 
-# Calculate losses and accuracies for a network with batch size 2
-loss_d4, accuracies_d4, _ = neural_network_training(
-    network_deep,
-    learning_rate = 0.05,
-    batch_size = 2,
-    print_loss_values = False,
-    split_and_test = True
-)
+<span class="c1"># Calculate losses and accuracies for a network with batch size 2</span>
+<span class="n">loss_d4</span><span class="p">,</span> <span class="n">accuracies_d4</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">neural_network_training</span><span class="p">(</span>
+    <span class="n">network_deep</span><span class="p">,</span>
+    <span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">0.05</span><span class="p">,</span>
+    <span class="n">batch_size</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="n">print_loss_values</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">split_and_test</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="p">)</span>
 </pre></div>
 
     </div>
@@ -40121,18 +40121,18 @@ Wall time: 3min 4s
 <div class="prompt input_prompt">In&nbsp;[0]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">time</span>
-# Create instance of the deep network
-network_d5 = NeuralNetDeep(input_size, hidden_size_d, num_classes)
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
+<span class="c1"># Create instance of the deep network</span>
+<span class="n">network_d5</span> <span class="o">=</span> <span class="n">NeuralNetDeep</span><span class="p">(</span><span class="n">input_size</span><span class="p">,</span> <span class="n">hidden_size_d</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">)</span>
 
-# Calculate losses and accuracies for a network with batch size 2
-loss_d5, accuracies_d5, _ = neural_network_training(
-    network_deep,
-    learning_rate = 0.05,
-    batch_size = 256,
-    print_loss_values = False,
-    split_and_test = True
-)
+<span class="c1"># Calculate losses and accuracies for a network with batch size 2</span>
+<span class="n">loss_d5</span><span class="p">,</span> <span class="n">accuracies_d5</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">neural_network_training</span><span class="p">(</span>
+    <span class="n">network_deep</span><span class="p">,</span>
+    <span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">0.05</span><span class="p">,</span>
+    <span class="n">batch_size</span> <span class="o">=</span> <span class="mi">256</span><span class="p">,</span>
+    <span class="n">print_loss_values</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">split_and_test</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="p">)</span>
 </pre></div>
 
     </div>
@@ -43185,11 +43185,11 @@ Qggh7pIEUQghhBBCCCEEAP8P8RxgUa7/3rMAAAAASUVORK5CYII=
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># get classification reports and confusion matrices for the shallow neural network</span>
-<span class="o">%%</span><span class="k">time</span>
-test_loader = get_test_loader_from_arrays(batch_size_optimal, descriptors_test, target_test)
-y_pred_nn_base, _ = neural_network_predict(network_base, test_loader)
-class_report_nn_base = classification_report(target_test, y_pred_nn_base, target_names = target_names)
-conf_matrix_nn_base = confusion_matrix(target_test, y_pred_nn_base)
+<span class="o">%%time</span>
+<span class="n">test_loader</span> <span class="o">=</span> <span class="n">get_test_loader_from_arrays</span><span class="p">(</span><span class="n">batch_size_optimal</span><span class="p">,</span> <span class="n">descriptors_test</span><span class="p">,</span> <span class="n">target_test</span><span class="p">)</span>
+<span class="n">y_pred_nn_base</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">neural_network_predict</span><span class="p">(</span><span class="n">network_base</span><span class="p">,</span> <span class="n">test_loader</span><span class="p">)</span>
+<span class="n">class_report_nn_base</span> <span class="o">=</span> <span class="n">classification_report</span><span class="p">(</span><span class="n">target_test</span><span class="p">,</span> <span class="n">y_pred_nn_base</span><span class="p">,</span> <span class="n">target_names</span> <span class="o">=</span> <span class="n">target_names</span><span class="p">)</span>
+<span class="n">conf_matrix_nn_base</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">target_test</span><span class="p">,</span> <span class="n">y_pred_nn_base</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -43222,11 +43222,11 @@ Wall time: 28.4 ms
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># get classification reports and confusion matrices for the deep neural network</span>
-<span class="o">%%</span><span class="k">time</span>
-test_loader_deep = get_test_loader_from_arrays(batch_size_optimal, descriptors_test, target_test)
-y_pred_nn_deep, _ = neural_network_predict(network_deep, test_loader_deep)
-class_report_nn_deep = classification_report(target_test, y_pred_nn_deep, target_names = target_names)
-conf_matrix_nn_deep = confusion_matrix(target_test, y_pred_nn_deep)
+<span class="o">%%time</span>
+<span class="n">test_loader_deep</span> <span class="o">=</span> <span class="n">get_test_loader_from_arrays</span><span class="p">(</span><span class="n">batch_size_optimal</span><span class="p">,</span> <span class="n">descriptors_test</span><span class="p">,</span> <span class="n">target_test</span><span class="p">)</span>
+<span class="n">y_pred_nn_deep</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">neural_network_predict</span><span class="p">(</span><span class="n">network_deep</span><span class="p">,</span> <span class="n">test_loader_deep</span><span class="p">)</span>
+<span class="n">class_report_nn_deep</span> <span class="o">=</span> <span class="n">classification_report</span><span class="p">(</span><span class="n">target_test</span><span class="p">,</span> <span class="n">y_pred_nn_deep</span><span class="p">,</span> <span class="n">target_names</span> <span class="o">=</span> <span class="n">target_names</span><span class="p">)</span>
+<span class="n">conf_matrix_nn_deep</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">target_test</span><span class="p">,</span> <span class="n">y_pred_nn_deep</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -43917,9 +43917,9 @@ IsPET0QkMkz8REQiw8RPRCQyTPxERCLDxE9EJDL/D6C/XFD2cyTzAAAAAElFTkSuQmCC
 <div class="prompt input_prompt">In&nbsp;[0]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">time</span>
-# Train the network
-loss_sm, accuracies_sm, network_sm = neural_network_training(network_sm, print_loss_values = False, split_and_test = True)
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
+<span class="c1"># Train the network</span>
+<span class="n">loss_sm</span><span class="p">,</span> <span class="n">accuracies_sm</span><span class="p">,</span> <span class="n">network_sm</span> <span class="o">=</span> <span class="n">neural_network_training</span><span class="p">(</span><span class="n">network_sm</span><span class="p">,</span> <span class="n">print_loss_values</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">split_and_test</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -45566,11 +45566,11 @@ k0ciIiIiIiIaE5NHIiIiIiIiGhOTRyIiIiIiIhrT/w+FiB5RAe8K3wAAAABJRU5ErkJggg==
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># get classification reports and confusion matrices for the sigmoid neural network</span>
-<span class="o">%%</span><span class="k">time</span>
-test_loader_sm = get_test_loader_from_arrays(batch_size_optimal, descriptors_test, target_test)
-y_pred_nn_sm, _ = neural_network_predict(network_sm, test_loader_sm)
-class_report_nn_sm = classification_report(target_test, y_pred_nn_sm, target_names = target_names)
-conf_matrix_nn_sm = confusion_matrix(target_test, y_pred_nn_sm)
+<span class="o">%%time</span>
+<span class="n">test_loader_sm</span> <span class="o">=</span> <span class="n">get_test_loader_from_arrays</span><span class="p">(</span><span class="n">batch_size_optimal</span><span class="p">,</span> <span class="n">descriptors_test</span><span class="p">,</span> <span class="n">target_test</span><span class="p">)</span>
+<span class="n">y_pred_nn_sm</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">neural_network_predict</span><span class="p">(</span><span class="n">network_sm</span><span class="p">,</span> <span class="n">test_loader_sm</span><span class="p">)</span>
+<span class="n">class_report_nn_sm</span> <span class="o">=</span> <span class="n">classification_report</span><span class="p">(</span><span class="n">target_test</span><span class="p">,</span> <span class="n">y_pred_nn_sm</span><span class="p">,</span> <span class="n">target_names</span> <span class="o">=</span> <span class="n">target_names</span><span class="p">)</span>
+<span class="n">conf_matrix_nn_sm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">target_test</span><span class="p">,</span> <span class="n">y_pred_nn_sm</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -45935,9 +45935,9 @@ kXA+fiIiiWHFT0QkMUz8REQSw8RPRCQxTPxERBLDxE9EJDFM/EREEsPET0QkMUz8REQSw8RPRCQx
 <div class="prompt input_prompt">In&nbsp;[0]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%</span><span class="k">time</span>
-# Train the network
-loss_sm2, accuracies_sm2, network_sm2 = neural_network_training(network_sm2, print_loss_values = False, split_and_test = True, epochs = 480)
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%time</span>
+<span class="c1"># Train the network</span>
+<span class="n">loss_sm2</span><span class="p">,</span> <span class="n">accuracies_sm2</span><span class="p">,</span> <span class="n">network_sm2</span> <span class="o">=</span> <span class="n">neural_network_training</span><span class="p">(</span><span class="n">network_sm2</span><span class="p">,</span> <span class="n">print_loss_values</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">split_and_test</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">epochs</span> <span class="o">=</span> <span class="mi">480</span><span class="p">)</span>
 </pre></div>
 
     </div>
